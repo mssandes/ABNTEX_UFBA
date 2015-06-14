@@ -1,0 +1,161 @@
+%%
+%% Customizações do abnTeX2 (http://abnTeX2.googlecode.com) para a UFBA
+%%
+%% This work may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in
+%%   http://www.latex-project.org/lppl.txt
+%% and version 1.3 or later is part of all distributions of LaTeX
+%% version 2005/12/01 or later.
+%%
+%% This work has the LPPL maintenance status `maintained'.
+%% 
+%% The Current Maintainer of this work is Marton S dos Santos, mssandes@yahoo.com.br
+%%
+%% Further information about abnTeX2 are available on http://abntex2.googlecode.com/
+%%
+
+% ---
+% INICIO DAS CUSTOMIZACOES PARA A UFBA
+% ---
+
+\ProvidesPackage{abntex2novopacote}[2014/09/01 Criacao desta customizacao do abnTeX2]
+
+% -----------
+% Adicionando Orientadora e Coorientadora
+% --
+
+\newcommand{\orientadoraname}{Orientadora:} % Inserido por MSS
+\newcommand{\coorientadoraname}{Coorientadora:}
+
+% Comandos de dados - orientadora
+\providecommand{\imprimirorientadoraRotulo}{}
+\providecommand{\imprimirorientadora}{}
+\newcommand{\orientadora}[2][\orientadoraname]%
+  {\renewcommand{\imprimirorientadoraRotulo}{#1}%
+   \renewcommand{\imprimirorientadora}{#2}}
+
+% Comandos de dados - coorientadora
+\providecommand{\imprimircoorientadoraRotulo}{}
+\providecommand{\imprimircoorientadora}{}
+\newcommand{\coorientadora}[2][\coorientadoraname]%
+  {\renewcommand{\imprimircoorientadoraRotulo}{#1}%
+   \renewcommand{\imprimircoorientadora}{#2}}
+
+
+% -----------
+% Ajuste para Istituição curso e programa
+% --
+% Comandos de dados - faculdade
+\providecommand{\imprimirfaculdade}{}
+\newcommand{\faculdade}[1]{\renewcommand{\imprimirfaculdade}{#1}}
+
+% Comandos de dados - tipo de programa
+\providecommand{\imprimirprograma}{}
+\newcommand{\programa}[1]{\renewcommand{\imprimirprograma}{#1}}
+
+% -----------
+% alterando a capa
+% --
+
+\renewcommand{\imprimircapa}{%
+  \begin{capa}%
+    \vfill
+    \begin{center}
+       \includegraphics[width=1.4 cm]{logo_ufba.eps}
+       
+       \MakeUppercase{\Large\imprimirinstituicao}   %% \MakeUppercase - Letras maiúsculas
+       
+       \MakeUppercase{\large\imprimirfaculdade}
+       
+       \MakeUppercase{\imprimirprograma}
+
+       \vspace{3cm}
+
+       \textbf{\MakeUppercase{\ABNTEXchapterfont\large\imprimirautor}}
+
+       \vspace{-3cm}
+
+       \vfill
+       \MakeUppercase{\ABNTEXchapterfont\bfseries\LARGE\imprimirtitulo}
+       \vfill
+    
+       \center
+       \large\imprimirlocal
+
+       \large\imprimirdata
+    
+       \vspace*{1cm}
+    \end{center}
+  \end{capa}
+}
+
+% -----------
+% folha de rosto 
+% -- 
+
+\makeatletter
+
+\renewcommand{\folhaderostocontent}{
+\begin{center}
+   \MakeUppercase{\ABNTEXchapterfont\bfseries\Large\imprimirautor}
+    
+%    \vspace*{1cm}
+%    
+%{\ABNTEXchapterfont\large\imprimirautor}
+
+   \vspace*{\fill}\vspace*{\fill}
+
+   \begin{center}
+      \MakeUppercase{\ABNTEXchapterfont\bfseries\Large\imprimirtitulo}
+   \end{center}
+ %% \MakeUppercase{} - Pacote textcase
+   \vspace*{\fill}
+
+%% Modelo fornecido pelo grupo ABNTEX2
+%\abntex@ifnotempty{\imprimirpreambulo}{%
+%  \hspace{.45\textwidth}
+%  \begin{minipage}{.5\textwidth}
+%  \SingleSpacing
+%  \imprimirpreambulo
+%  \end{minipage}%
+%  \vspace*{\fill}
+%}%
+
+\begin{flushright}
+\abntex@ifnotempty{\imprimirpreambulo}{%
+  \hspace{.6\textwidth}
+  \begin{minipage}{.65\textwidth}
+  \SingleSpacing
+  \imprimirpreambulo\\
+  
+ %\vspace*{\fill}
+%}%
+{\imprimirorientadorRotulo~\imprimirorientador\\}
+{\imprimirorientadoraRotulo~\imprimirorientadora\par}
+
+\abntex@ifnotempty{\imprimircoorientador}
+  {\imprimircoorientadorRotulo~\imprimircoorientador}%
+  {\imprimircoorientadoraRotulo~\imprimircoorientadora}%
+}%
+\end{minipage}%
+\end{flushright}
+\vspace*{\fill}
+
+%{\abntex@ifnotempty{\imprimirinstituicao}{\imprimirinstituicao\vspace*{\fill}}}
+
+{\large\imprimirlocal}
+
+\par
+
+{\large\imprimirdata}
+\vspace*{1cm}
+\end{center}
+}
+
+\makeatother
+
+% ---
+% FIM DAS CUSTOMIZACOES PARA A UNIVERSIDADE XXX
+% ---

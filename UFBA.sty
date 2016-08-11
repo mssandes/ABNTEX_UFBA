@@ -17,7 +17,7 @@
 %%
 
 % ---
-% INICIO DAS CUSTOMIZACOES PARA A UFBA
+% INICIO DAS PERSONALIZACOES PARA A UFBA
 % ---
 
 \ProvidesPackage{abntex2novopacote}[2014/09/01 Criacao desta customizacao do abnTeX2]
@@ -55,6 +55,10 @@
 \providecommand{\imprimirprograma}{}
 \newcommand{\programa}[1]{\renewcommand{\imprimirprograma}{#1}}
 
+% Comandos de dados - subtitulo
+\providecommand{\imprimirsubtitulo}{}
+\newcommand{\subtitulo}[1]{\renewcommand{\imprimirsubtitulo}{#1}}
+
 % -----------
 % alterando a capa
 % --
@@ -71,7 +75,7 @@
        
        \MakeUppercase{\imprimirprograma}
 
-       \vspace{3cm}
+       \vspace{2cm}
 
        \textbf{\MakeUppercase{\ABNTEXchapterfont\large\imprimirautor}}
 
@@ -79,6 +83,8 @@
 
        \vfill
        \MakeUppercase{\ABNTEXchapterfont\bfseries\LARGE\imprimirtitulo}
+       
+       \MakeUppercase{\ABNTEXchapterfont\bfseries\Large\imprimirsubtitulo}
        \vfill
     
        \center
@@ -101,7 +107,7 @@
 \begin{center}
    \MakeUppercase{\ABNTEXchapterfont\bfseries\Large\imprimirautor}
     
-%    \vspace*{1cm}
+    \vspace*{-5cm}
 %    
 %{\ABNTEXchapterfont\large\imprimirautor}
 
@@ -109,6 +115,8 @@
 
    \begin{center}
       \MakeUppercase{\ABNTEXchapterfont\bfseries\Large\imprimirtitulo}
+      
+      \MakeUppercase{\ABNTEXchapterfont\bfseries\large\imprimirsubtitulo}
    \end{center}
  %% \MakeUppercase{} - Pacote textcase
    \vspace*{\fill}
@@ -157,5 +165,5 @@
 \makeatother
 
 % ---
-% FIM DAS CUSTOMIZACOES PARA A UNIVERSIDADE XXX
+% FIM DAS PERSONALIZACOES PARA A UNIVERSIDADE FEDERAL DA BAHIA
 % ---

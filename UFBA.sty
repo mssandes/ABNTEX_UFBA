@@ -44,6 +44,34 @@
    \renewcommand{\imprimircoorientadora}{#2}}
 
 
+%%% -----
+%%% Formato de cabeçalho/rodapé romano nos elementos pré-textuais
+%%% -----
+
+%% Novo estilo
+\makepagestyle{pre_roman} %%% escolha um nome
+\makeevenhead{pre_roman}{}{}{\ABNTEXfontereduzida \textbf \thepage}
+\makeoddhead{pre_roman}{}{}{\ABNTEXfontereduzida \textbf \thepage}
+
+%% Customiza comando \pretextual
+\renewcommand{\pretextual}{
+	\pagenumbering{roman} %%% ou \pagenumbering{Roman}
+	\aliaspagestyle{chapter}{pre_roman}% customizing chapter pagestyle
+	\pagestyle{pre_roman}
+	\aliaspagestyle{cleared}{empty}
+	\aliaspagestyle{part}{pre_roman}
+}
+
+% ---
+% Ajusta a marca \textual para que a numeração volte a ser arábica
+% nos elementos textuais
+\let\oldtextual\textual        % copia o comando \textual anterior para \oldtextual
+\renewcommand{\textual}{%
+	\oldtextual%
+	\pagenumbering{arabic} % volta à numeração arábica
+}
+%%% -----------
+
 % -----------
 % Ajuste para Istituição curso e programa
 % --

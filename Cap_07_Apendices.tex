@@ -1,0 +1,126 @@
+%% Apêndices
+%%
+\begin{apendicesenv}
+%
+%% Imprime uma página indicando o início dos apêndices
+\partapendices
+%
+%% ----------------------------------------------------------
+\chapter{Trabalhos Publicados}\label{chap:apendice1}
+%% ----------------------------------------------------------
+%
+\section{Artigos Publicados em Anais de Congressos e Simpósios}
+\begin{enumerate}
+	\item SANTOS, M. S.; SIMAS FILHO, E. F.; FARIAS, P. C. A. M; SEIXAS, J. M. Máquinas de aprendizado extremo para classificação online de eventos no
+	detector ATLAS. In: \textit{XXXV Simpósio Brasileiro de Telecomunicaçõees e Processamento de Sinais (SBrT
+	2017) (SBrT 2017)}. São Pedro, Brazil: [s.n.], 2017. p. 413–417
+    \begin{itemize}
+    	\item \textbf{Resumo}
+    \end{itemize}
+	
+	O ATLAS é um dos detectores do LHC (\textit{Large Hadron Collider}), e está localizado no CERN (Organização Européia para a pesquisa Nuclear). Para adequada caracterização das partículas é preciso realizar uma precisa medição do perfil de deposição de energia à medida que ocorrem interações com o detector. No ATLAS os calorímetros são responsáveis por realizar a estimação da energia das partículas e, neste sentido, utilizam mais de 100.000 sensores. Um dos discriminadores para a detecção \textit{online} de elétrons utilizados no ATLAS é o \textit{Neural Ringer}, no qual o perfil de deposição de energia é utilizado como entrada para um classificador neural tipo \emph{perceptron} de múltiplas camadas. Este trabalho propõe o uso de Máquinas de Aprendizado Extremo (ELM) em substituição às redes do tipo \textit{perceptron multilayer} no \textit{Neural Ringer}. Os resultados obtidos de uma base de dados simulados apontam para uma significativa redução do tempo de treinamento, com desempenho de classificação semelhante.
+	
+	\item SANTOS, M. S dos; SIMAS FLHO E. F de; FARIAS, P. C. A. M; SEIXAS, J. M. Máquinas de Aprendizado Extremo e Redes com Estados de Eco para Classificação \textit{Online} de Eventos no detector ATLAS. In: \textit{Anais Do XXII Congresso Brasileiro de Automática}. 09 a 12 de setembro. João Pessoa, Brasil[S.l.]: CBA - Congresso Brasileiro De
+	Automática, 2018.
+	\begin{itemize}
+		\item \textbf{Resumo}
+	\end{itemize}
+	O ATLAS é um dos detectores do acelerador de partículas LHC e com sua estrutura cilíndrica que compreende diversas camadas de sensores é capaz de caracterizar os fenômenos de interesse que ocorrem após as colisões dos feixes de partículas. O sistema de medição de energia (calorímetro) do ATLAS é composto por mais de 100.000 sensores e fornece informações importantes para a seleção \textit{online} dos eventos de interesse. Neste contexto, o \textit{Neural Ringer} é um discriminador de partículas eletromagnéticas (elétrons e fótons) que opera no sistema \textit{online} de filtragem (\textit{trigger}) do ATLAS e utiliza uma rede neural tipo Perceptron de múltiplas camadas (MLP - \textit{Multi-layer Perceptron}) para realizar a classificação das partículas a partir do perfil de deposição de energia medido nos calorímetros e formatado em anéis. Neste trabalho é proposta a substituição dos classificadores MLP do \textit{Neural Ringer} por máquinas de aprendizado com reduzido custo computacional de treinamento. São utilizadas máquinas de aprendizado extremo (ELM - \textit{Extreme Learning Machines}) e redes com estados de eco (ESN - \textit{Echo State Networks}) e resultados apontam que é possível obter eficiência de classificação semelhante ao sistema original com uma considerável redução do tempo de treinamento.
+\end{enumerate}
+
+\section{Resumo Publicado em Encontro}
+\begin{enumerate}
+	\item SANTOS, M. S.; SOUZA, E. E. P.; SIMAS FILHO, E. F.; FARIAS, P. C. A. M; SEIXAS, J. M; ANDRADE FILHO, L. M. Uso de Algoritmos de Treinamento Rápido para o Discriminador \textit{Neural Ringer} no Detector ATLAS. In: \textit{XXXIX Encontro Nacional de Física de Partículas e Campos (SBF - Sociedade Brasileira de Física
+	2018) (SBF 2018)}. 24 a 28 de setembro, Campos do Jordão, Brazil: [s.n.], 2018.
+	\begin{itemize}
+		\item \textbf{Resumo}
+	\end{itemize}
+	O Neural Ringer é um dos algoritmos atualmente utilizados para 	identificação de elétrons no segundo nível de filtragem online do	detector ATLAS. Para prover a decisão de aceitação ou rejeição dos 	eventos, o Neural Ringer realiza um ordenamento topológico em forma de	anéis concêntricos do perfil de deposição de energia medido nos calorímetros. Neste discriminador, uma rede neural tipo \textit{perceptron} de múltiplas camadas é utilizada para classificação. Neste trabalho é	proposta a utilização de outros modelos de rede neural de treinamento rápido para realizar a etapa de classificação no Neural Ringer. Foram testados a Máquina de Aprendizado Extremo (ELM - \textit{Extreme Learning	Machine}) e a Rede de Estado de Eco (ESN - \textit{Echo State Network}). Utilizando dados simulados foi possível observar que os modelos de 	treinamento propostos obtiveram resultados de eficiência de	classificação semelhantes à versão tradicional do Neural Ringer, porém 	num tempo de treinamento consideravelmente reduzido.
+\end{enumerate}
+%% ====================================
+\chapter{Análise de Desempenho da ELM}\label{chap:apendice2}
+\section{Sensibilidade dos pesos à distribuição de probabilidade utilizada.}
+
+
+As redes ELM propostas inicialmente por \citeonline{huang2004} são redes que não possuem em seu algoritmo de treino uma etapa de retropropagação do erro. Ou seja, não possui realimentação baseada no erro cometido pelo processo de treino. Sua base é a determinação da matriz $\mathbf{H}$, que representa os pesos da camada oculta da rede, expressa na~\autoref{eq:slfn2} em sua forma matricial.
+
+
+\begin{eqnarray}
+\vec{y}_j = \sum_{i=1}^{N} \beta_i \Phi \mathrm{(\vec{w}_i\vec{x}_j + b_i)}, \: j \in [1,M]\label{eq:slfn2}
+\end{eqnarray}
+
+A equação~\ref{eq:slfn2} pode ser reescrita como $\mathbf{H}\boldsymbol{\upbeta} = \mathbf{Y}$, sendo,
+\begin{small}
+	\begin{eqnarray}
+	\mathbf{H} =
+	\left( \begin{array}{ccc}
+	\Phi(\mathrm{\vec{w}_1}\vec{x}_1 + b_1) & \ldots & \Phi(\mathrm{\vec{w}_N}\vec{x}_1 + b_N) \\
+	\vdots      & \ddots & \vdots \\
+	\Phi(\mathrm{\vec{w}_1}\vec{x}_M + b_1) & \ldots & \Phi(\mathrm{\vec{w}_N}\vec{x}_M + b_N)
+	\end{array} \right), \label{eq:slfn_mat2}
+	\end{eqnarray}
+\end{small}
+e $\boldsymbol{\upbeta} = (\beta^T \ldots \beta^T_N)^T$ e $Y = (y^T_1 \ldots y^T_M)^T$.
+
+Nos trabalhos de \citeonline{huang2006}, \citeonline{huang2011} e \citeonline{huang2015} são exibidos os teoremas que dão suporte e fundamentação matemática à técnica. Alguns teoremas apresentados e demonstrados são: sua capacidade de aproximador universal, capacidade de aprendizagem e  convergência. E uma característica interessante é a forma que os pesos da camada oculta são gerados, os quais são gerados por uma função que produza números pseudo-aleatórios, e a função de ativação seja diferenciável continuamente, para que seja possível determinar os valores da matriz  $\mathbf{H}$.
+
+Neste trabalho foi feita uma avaliação da influência da característica dos número pseudo aleatórios utilizados na camada oculta. Pois, existem diferentes tipos de funções de distribuição de probabilidade utilizadas para produção de números pseudo-aleatórios. Três formas foram avaliadas: Número gerados com distribuição normal (N1), Números com distribuição uniforme (N2) e distribuição uniforme de números inteiros pseudo-aleatórios normalizados (N3) pelo maior módulo.
+
+Os resultados foram obtidos utilizando uma das bases de dados disponíveis, a qual é segmentada em 16 regiões, ver~\autoref{tab:segmentacaoMC2014}, (E$_T$, $|\eta|$) e são apresentados na~\autoref{tab:testELM}. Primeiro as redes foram treinadas e variando-se o número de neurônios na camada oculta até 100. em seguida, o número de neurônios que apresentou o maior índice SP dentro desse intervalo, foi utilizado para o teste de sensibilidade. Observa-se que os resultados obtidos com os número produzidos com distribuição uniforme (N2) resultaram nos menores índices SP em todas as regiões da base de teste.
+
+\begin{table}[H]
+	%\rowcolors{2}{gray!25}{white}
+	\centering
+	\begin{footnotesize}
+	\caption{Segmentação base de dados utilizada.}
+	\label{tab:segmentacaoMC2014}
+	%  \resizebox{\linewidth}{!}{% Resize table to fit within \linewidth horizontally
+	\setlength{\extrarowheight}{4pt}       %%Aumentar a altura das linhas
+	\begin{tabular}{c*{4}c} \toprule
+		\multicolumn{5}{c}{\bfseries Intervalos} \\ \midrule
+		%\backslashbox{x}{y} &       0    &      1         &       2     &         3 \\
+		 $E_T$ [GeV]         &  $[20;30]$ &     $[30;40]$  &   $[40;50]$ &   $[50;20.000]$ \\  \cmidrule(lr){1-1}\cmidrule(lr){2-5}
+		$|\eta|$              & $[0,00;0,80]$  & $[0,80;1,37]$ & $[1,37;1,54]$ & $[1,54;2,5]$  \\ \bottomrule
+	\end{tabular}
+	\end{footnotesize}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\begin{footnotesize}
+	\setlength{\extrarowheight}{2pt}
+	\caption{Índices SP para três métodos de produzir números pseudo-aleatórios para a ELM.}\label{tab:testELM}
+    \begin{tabular}{*{5}{c}}\toprule
+    	\multicolumn{5}{c}{Índices SP para cada região da base de teste } \\ \toprule
+    	&         (0,0)      &       (0,1)        &         (0,2)      &       (0,3)        \\ \cmidrule(lr){2-2}\cmidrule(lr){3-3}\cmidrule(lr){4-4}\cmidrule(lr){5-5}
+	N1	& 96,366 $\pm$ 0,590 & 94,911 $\pm$ 0,963 & 94,959 $\pm$ 2,262 & 91,918 $\pm$ 0,566 \\
+	N2	& 94,003 $\pm$ 1,190 & 92,370 $\pm$ 0,989 & 93,376 $\pm$ 2,587 & 90,124 $\pm$ 1,111 \\
+    N3  & 96,355 $\pm$ 0,528 & 95,169 $\pm$ 0,699 & 94,328 $\pm$ 2,378 & 92,020 $\pm$ 0,461 \\ \midrule
+    	&         (1,0)      &       (1,1)        &         (1,2)      &       (1,3)        \\	\cmidrule(lr){2-2}\cmidrule(lr){3-3}\cmidrule(lr){4-4}\cmidrule(lr){5-5}
+	N1	& 97,398 $\pm$ 1,024 & 95,278 $\pm$ 0,940 & 90,873 $\pm$ 3,201 & 92,197 $\pm$ 1,186 \\
+	N2	& 95,708 $\pm$ 2,661 & 92,468 $\pm$ 1,814 & 89,789 $\pm$ 2,855 & 88,749 $\pm$ 2,605 \\
+	N3	& 97,568 $\pm$ 0,899 & 95,681 $\pm$ 0,820 & 92,148 $\pm$ 3,455 & 91,546 $\pm$ 1,165 \\ \midrule
+    	&         (2,0)      &       (2,1)        &         (2,2)      &       (2,3)        \\ \cmidrule(lr){2-2}\cmidrule(lr){3-3}\cmidrule(lr){4-4}\cmidrule(lr){5-5}
+	N1	& 97,693 $\pm$ 1,058 & 96,734 $\pm$ 1,495 & 99,147 $\pm$ 4,761 & 96,348 $\pm$ 1,647 \\
+	N2	& 95,938 $\pm$ 1,470 & 95,892 $\pm$ 1,877 & 96,655 $\pm$ 3,990 & 94,172 $\pm$ 3,678 \\
+	N3	& 97,782 $\pm$ 0,869 & 96,230 $\pm$ 1,167 & 99,716 $\pm$ 3,805 & 95,151 $\pm$ 1,879 \\ \midrule
+    	&         (3,0)      &       (3,1)        &         (3,2)      &       (3,3)        \\ \cmidrule(lr){2-2}\cmidrule(lr){3-3}\cmidrule(lr){4-4}\cmidrule(lr){5-5}
+	N1	& 99,209 $\pm$ 0,256 & 98,541 $\pm$ 0,564 & 99,569 $\pm$ 1,993 & 98,081 $\pm$ 0,489 \\
+	N2	& 98,757 $\pm$ 0,842 & 97,501 $\pm$ 0,775 & 98,270 $\pm$ 1,867 & 96,749 $\pm$ 1,674 \\
+	N3	& 99,271 $\pm$ 0,204 & 98,652 $\pm$ 0,578 & 99,482 $\pm$ 2,025 & 98,140 $\pm$ 0,464 \\ \bottomrule
+    \end{tabular}
+	\end{footnotesize}
+\end{table}
+
+As menores diferenças alcançadas foram de 0,45\%, enquanto que as maiores foram de 3,44\% na comparação entre os métodos N2 e N1. Na comparação entre o método N3 e N1, a menor diferença foi de 0,34\% e a maior diferença foi de 3,21\%, em favor do método N3. Outro dado possível de observar, é a incerteza alcançada pelos métodos. Em todas as regiões o método N2 produziu resultados com incerteza superior aos métodos N1 e N3.
+
+Os resultados obtidos indicam que apesar de a técnica ELM ser flexível quanto ao método de produção dos números pseudo-aleatórios para a camada de entrada, ela possui sensibilidade, quanto às características da distribuição utilizada. Em problemas com grande volume de dados a ser processado essa variação pode ser significativa e interferir nos resultados reduzindo o desempenho do classificador.
+
+%% ----------------------------------------------------------
+%\chapter{Nullam elementum urna vel imperdiet sodales elit ipsum pharetra ligula
+%ac pretium ante justo a nulla curabitur tristique arcu eu metus}
+%% ----------------------------------------------------------
+%\lipsum[55-57]
+%
+\end{apendicesenv}
+% ---

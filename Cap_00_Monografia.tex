@@ -1,0 +1,506 @@
+% ------------------------------------------------------------------------
+
+\documentclass[
+	% -- opções da classe memoir --
+%	draft,
+	11pt,				% tamanho da fonte
+	openright,			% capítulos começam em pág ímpar (insere página vazia caso preciso)
+	twoside,			% para impressão em verso e anverso. Oposto a oneside
+	a4paper,			% tamanho do papel. 
+	% -- opções da classe abntex2 --
+	%chapter=TITLE,		% títulos de capítulos convertidos em letras maiúsculas
+	%section=TITLE,		% títulos de seções convertidos em letras maiúsculas
+	%subsection=TITLE,	% títulos de subseções convertidos em letras maiúsculas
+	%subsubsection=TITLE,% títulos de subsubseções convertidos em letras maiúsculas
+	% -- opções do pacote babel --
+	english,			% idioma adicional para hifenização
+	french,				% idioma adicional para hifenização
+	spanish,			% idioma adicional para hifenização
+	brazil				% o último idioma é o principal do documento
+	]{abntex2}          % estilo abnt
+
+% ---
+% Pacotes básicos 
+% ---
+\usepackage{lmodern}			% Usa a fonte Latin Modern			
+\usepackage[T1]{fontenc}		% Selecao de codigos de fonte.
+\usepackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
+\usepackage{lastpage}			% Usado pela Ficha catalográfica
+\usepackage{indentfirst}		% Indenta o primeiro parágrafo de cada seção.
+\usepackage{color, colortbl}	% Controle das cores
+\usepackage[usenames,
+            dvipsnames,
+            svgnames,
+            table]{xcolor}	    % Controle das cores
+\usepackage{graphicx}			% Inclusão de gráficos
+\usepackage{microtype} 			% para melhorias de justificação
+\usepackage{multirow}           % habillitar multi linhas em tabeas
+\usepackage[table]{xcolor}      % permitir colorir linhas/colunas da tabela
+\usepackage{hyperref}           % referências com hiperlink
+\usepackage{siunitx,booktabs}           % configuraçoes extras de tabela
+\usepackage{longtable}          % para construir tabelas que iniciam em uma página e erminam na outra
+\usepackage{threeparttable}     % ambiente para permitir justificar o "caption" ao tamnaho da tabela
+\usepackage{verbatim}           % 
+\usepackage{mathtools,
+            amsmath,
+            amsbsy,
+            amssymb,
+            amsfonts, dsfont}   % Pacotes para auxílio em ambientes matemáticos 
+\usepackage[font=footnotesize,
+            labelfont=bf]
+            {subcaption,caption}   % config p os rótulos de tabelas e figuras e habilitar inserção de sublegendas. ex: figuras com múltiplas imagens
+\usepackage{upgreek}            % simbolos matemáticos maiúsculos
+\usepackage{float}              % obriga ao corpo flutuante ficar na posição que está no código LATEX [H]
+\usepackage{lscape}
+\usepackage{multicol}           % ambiente para configuração de ambientes multicolunas
+\usepackage{slashbox}           % habiitar divisao diagonal em celulas de tabelas
+%\usepackage{nonfloat}
+\usepackage{caption}
+\usepackage{UFBA}               % personalizações para a UFBA
+\usepackage{eurosym}
+\usepackage{gensymb}
+\usepackage{etoc}
+\usepackage[nohints,tight]{minitoc} 
+\setcounter{minitocdepth}{4}
+%\usepackage{epstopdf}
+%\usepackage{fnpct}
+%\usepackage{ftnxtra}
+%\usepackage{stfloats}
+%% ---
+%% ---
+
+% ---
+%% Catologo de fontes		
+%%http://www.tug.dk/FontCatalogue/mathfonts.html
+% ---
+
+% ---
+% Pacotes adicionais, usados apenas no âmbito do Modelo Canônico do abnteX2
+% ---
+\usepackage{lipsum}				% para geração de dummy text
+% ---
+
+% ---
+% Pacotes de citações
+% ---
+\usepackage[brazilian,hyperpageref]{backref}	 % Paginas com as citações na bibl
+\usepackage[alf,bibjustif]{abntex2cite}	% Citações padrão ABNT
+
+% --- 
+% CONFIGURAÇÕES DE PACOTES
+% --- 
+
+% ---
+% Configurações do pacote backref
+% Usado sem a opção hyperpageref de backref
+\renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
+% Texto padrão antes do número das páginas
+\renewcommand{\backref}{}
+% Define os textos da citação
+
+\renewcommand*{\backrefalt}[4]{
+	\ifcase #1 %
+	No one citation on the text.%
+	\or
+	Cited on page #2.%
+	\else
+	Cited #1 times on pages #2.%
+	\fi}%
+
+\newenvironment{figurehere}
+  {\par\medskip\noindent\minipage{\linewidth}}
+  {\endminipage\par\medskip}
+
+%\newcommand\figurehere[1]{%
+%\medskip\noindent\begin{minipage}{\columnwidth}
+%\centering%
+%#1%
+%%figure,caption, and label go here
+%\end{minipage}\medskip}
+
+%% Definicao do corpo figurehere quando a figura estiver dentro do ambiente multicols
+%\newenvironment{figurehere}
+%  {\def\@captype{figure}}
+%  {}
+
+\newcommand{\splitcell}[1]{%
+  \begin{tabular}{@{}c@{}}\strut#1\strut\end{tabular}%
+}
+
+%% Definindo comando para estilo de representacao de vetores
+\renewcommand{\vec}[1]{\mathbf{#1}}
+
+%% Definindo espaco entre equacoes nos ambientes eqnarray e equation
+\setlength{\jot}{10pt}
+% ---
+
+% ----------------------------------------------------------
+% Informações de dados para CAPA e FOLHA DE ROSTO
+% ----------------------------------------------------------
+\titulo{Título do Trabalho}
+
+\subtitulo{Subtítulo se Houver}  %% Inserir subtítulo, se houver
+
+\autor{ALuno Candidato}
+\local{Salvador}
+\data{2021}
+\orientador{Dr.  -- UFBA}
+\coorientador{Dr. -- UFBA}
+\instituicao{Universidade Federal da Bahia -- UFBA}
+\faculdade{Departamento de Engenharia Elétrica}
+\programa{Programa de Pós-Graduação em Engenharia Elétrica -- PPGEE}
+\tipotrabalho{Exame de qualificação de PhD}
+
+% O preambulo deve conter o tipo do trabalho, o objetivo, 
+% o nome da instituição e a área de concentração 
+\preambulo{Texto para exame de qualificação de tese de Doutorado apresentada  ao  Programa de Pós-graduação em Engenharia Elétrica da Universidade Federal da Bahia  como um dos requisitos para obtenção do grau de Doutor em Engenharia Elétrica.}
+% ---
+
+
+% ---
+% Configurações de aparência do PDF final
+% Cores no latex: http://latexcolor.com/
+
+% alterando o aspecto da cor azul
+%\definecolor{blue}{RGB}{41,5,195}
+% definindo cor usada nos hiperlinks do documento
+\definecolor{persianplum}{rgb}{0.44, 0.11, 0.11}
+\definecolor{midnightblue}{rgb}{0.1, 0.1, 0.44}
+% cor utilizada em celulas de tabelas
+\definecolor{lightgray}{rgb}{.9 .9 .9}
+\definecolor{gray2}{rgb}{.69 .69 .69}
+
+
+%\definecolor{orange}{rgb}{0.9, 0.36, 0.03}
+% informações do PDF
+\makeatletter
+\hypersetup{
+     	%pagebackref=true,		pdftitle={\@title}, 
+		pdfauthor={\@author},
+    	pdfsubject={\imprimirpreambulo},
+	    pdfcreator={LaTeX with abnTeX2},
+		pdfkeywords={abnt}{latex}{abntex}{abntex2}{trabalho acadêmico}, 
+		colorlinks=true,       		% false: boxed links; true: colored links
+%    	linkcolor=blue,          	% color of internal links
+    	citecolor=persianplum,       % color of links to bibliography
+    	linkcolor=midnightblue,       % color of internal links
+%    	citecolor=black,            % color of links to bibliography
+    	filecolor=magenta,      	% color of file links
+		urlcolor=blue,
+		bookmarksdepth=4
+}
+\makeatother
+% --- 
+
+% --- 
+% Espaçamentos entre colunas
+% --- 
+\setlength{\columnsep}{7mm}
+
+% --- 
+% Espaçamentos entre linhas e parágrafos 
+% --- 
+
+% O tamanho do parágrafo é dado por:
+\setlength{\parindent}{1.3cm}
+
+% Controle do espaçamento entre um parágrafo e outro:
+\setlength{\parskip}{0.2cm}  % tente também \onelineskip
+
+% ---
+% compila o indice
+% ---
+\makeindex
+% ---
+
+% ----
+% pasta para as figuras
+% \graphicspath{{subdir1/}{subdir2/}{subdir3/}...{subdirn/}}
+%\graphicspath{{/media/mssandes/MSSANDES1/cernbox/Pesquisa/Figuras/}}
+\graphicspath{{./Figs/}}
+% ----
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Início do documento
+% ----
+\begin{document}
+
+% Retira espaço extra obsoleto entre as frases.
+\frenchspacing 
+
+% ==========================================================
+% ----------------------------------------------------------
+% ELEMENTOS PRÉ-TEXTUAIS
+% ----------------------------------------------------------
+% \pretextual
+
+% ---
+% Capa
+% ---
+\imprimircapa
+% ---
+
+% ---
+% Folha de rosto
+% (o * indica que haverá a ficha bibliográfica)
+% ---
+\imprimirfolhaderosto*
+% ---
+
+% ---
+% Inserir a ficha Catalográfica
+% ---
+% Isto é um exemplo de Ficha Catalográfica, ou ``Dados internacionais de
+% catalogação-na-publicação''. Você pode utilizar este modelo como referência. 
+% Porém, provavelmente a biblioteca da sua universidade lhe fornecerá um PDF
+% com a ficha catalográfica definitiva após a defesa do trabalho. Quando estiver
+% com o documento, salve-o como PDF no diretório do seu projeto e substitua todo
+% o conteúdo de implementação deste arquivo pelo comando abaixo:
+%
+% \begin{fichacatalografica}
+%     \includepdf{fig_ficha_catalografica.pdf}
+% \end{fichacatalografica}
+
+%\input{Cap_0_i_FichaCatalografica}
+
+
+% ----------------------------------------------------------
+% Inserir errata
+% ----------------------------------------------------------
+%\begin{errata}
+%Elemento opcional da \citeonline[4.2.1.2]{NBR14724:2011}. Exemplo:
+%
+%\vspace{\onelineskip}
+%
+%FERRIGNO, C. R. A. \textbf{Tratamento de neoplasias ósseas apendiculares com
+%reimplantação de enxerto ósseo autólogo autoclavado associado ao plasma
+%rico em plaquetas}: estudo crítico na cirurgia de preservação de membro em
+%cães. 2011. 128 f. Tese (Livre-Docência) - Faculdade de Medicina Veterinária e
+%Zootecnia, Universidade de São Paulo, São Paulo, 2011.
+%
+%\begin{table}[htb]
+%\center
+%\footnotesize
+%\begin{tabular}{|p{1.4cm}|p{1cm}|p{3cm}|p{3cm}|}
+%  \hline
+%   \textbf{Folha} & \textbf{Linha}  & \textbf{Onde se lê}  & \textbf{Leia-se}  \\
+%    \hline
+%    1 & 10 & auto-conclavo & autoconclavo\\
+%   \hline
+%\end{tabular}
+%\end{table}
+%
+%\end{errata}
+% ---
+
+% ---
+% Inserir folha de aprovação
+% ----------------------------------------------------------
+%\include{Cap_0_ii_FolhaAprovacao}
+% ----------------------------------------------------------
+
+% ---
+% Dedicatória
+% ----------------------------------------------------------
+%\include{Cap_0_iii_Dedicatoria}
+% ----------------------------------------------------------
+
+% ---
+% Agradecimentos
+% ----------------------------------------------------------
+%\include{Cap_0_iv_Agradec}
+% ----------------------------------------------------------
+
+% ----------------------------------------------------------
+% Epígrafe
+% ----------------------------------------------------------
+%\begin{epigrafe}
+%    \vspace*{\fill}
+%	\begin{flushright}
+%		\textit{``Vós sois a nossa carta, \\
+%		escrita em nossos corações, \\
+%		conhecida e lida por todos os homens''.\\
+%		(II Coríntios 2:3)}
+%	\end{flushright}
+%\end{epigrafe}
+% ---
+
+% ----------------------------------------------------------
+% RESUMOS
+% ----------------------------------------------------------
+%\setlength{\absparsep}{18pt} % ajusta o espaçamento dos parágrafos do resumo
+\input{Cap_0_v_Resumo}
+
+% ---
+% inserir lista de ilustrações
+% ---
+\pdfbookmark[0]{\listfigurename}{lof}
+\listoffigures*
+\cleardoublepage
+% ---
+
+% ----------------------------------------------------------
+% inserir lista de tabelas
+% ----------------------------------------------------------
+\pdfbookmark[0]{\listtablename}{lot}
+\listoftables*
+\cleardoublepage
+% ---
+
+% ----------------------------------------------------------
+% inserir lista de abreviaturas, siglas e símbolos
+% ----------------------------------------------------------
+\input{Cap_0_vi_SiglasSimbolos}
+%% ---
+
+% ----------------------------------------------------------
+% inserir o sumario
+% ----------------------------------------------------------
+\pdfbookmark[0]{\contentsname}{toc}
+\tableofcontents*
+%%%%%%%%%%%%%%%%%%
+% insere o sumario do capítulo para auxilio
+% no capitulo deve inserir \localtableofcontents*
+\etocsettocstyle{}{} 
+%%%%%%%%%%%%%%%%%%
+\cleardoublepage
+% ---
+
+\textual
+
+% ----------------------------------------------------------
+% Introdução - CAPITULO 1
+% ----------------------------------------------------------
+\chapter[Introdução]{Introdução}\label{cap:intro}
+%\addcontentsline{toc}{chapter}{Introdução}
+% ----------------------------------------------------------
+
+\input{Cap_01_Introducao}
+
+% ----------------------------------------------------------
+% Pesquisa Bibliográfica - CAPITULO 2
+% ----------------------------------------------------------
+\chapter{Pesquisa Bibliográfica}\label{cap:pesquisa}
+%\addcontentsline{toc}{chapter}{Pesquisa Bibliográfica}
+
+\minitoc
+\input{Cap_02_PesqBiblio}
+
+% ----------------------------------------------------------
+% Metodologia - CAPITULO 3
+% ----------------------------------------------------------
+\chapter[Método]{Método}\label{cap:metodo}
+%\addcontentsline{toc}{chapter}{Método}
+\minitoc
+\input{Cap_03_Metodo}
+
+% ----------------------------------------------------------
+% Resultados Obtidos - CAPITULO 4
+% ----------------------------------------------------------
+\chapter[Resultados Obtidos]{Resultados Obtidos}\label{cap:result}
+%\addcontentsline{toc}{chapter}{Resultados Obtidos}
+\minitoc
+\input{Cap_04_Resultados}
+
+% ----------------------------------------------------------
+% Conclusão - CAPITULO 5 - FINAL
+% ----------------------------------------------------------
+\chapter[Conclusão]{Conclusão}\label{cap:conclusao}
+%\addcontentsline{toc}{chapter}{Conclusão}
+%\minitoc
+\input{Cap_05_Conclusao}
+
+
+%% ----------------------------------------------------------
+%% ELEMENTOS PÓS-TEXTUAIS
+%% ----------------------------------------------------------
+\postextual
+%% ----------------------------------------------------------
+%
+%% ----------------------------------------------------------
+% Referências bibliográficas
+%% ----------------------------------------------------------
+%%\bibliography{abntex2-modelo-references}
+\bibliography{Cap_06_Bibliografia}
+%
+%% ----------------------------------------------------------
+%% Glossário
+%% ----------------------------------------------------------
+%%
+%% Consulte o manual da classe abntex2 para orientações sobre o glossário.
+%%
+%%\glossary
+%
+%% ----------------------------------------------------------
+%% Apêndices
+%% ----------------------------------------------------------
+%
+%% ---
+%% Inicia os apêndices
+%% ---
+\input{Cap_07_Apendices}\label{ap:apendice1}
+%\begin{apendicesenv}
+%
+%% Imprime uma página indicando o início dos apêndices
+%\partapendices
+%
+%% ----------------------------------------------------------
+%\chapter{Códigos}
+%% ----------------------------------------------------------
+%
+%\lipsum[50]
+%
+%% ----------------------------------------------------------
+%\chapter{Nullam elementum urna vel imperdiet sodales elit ipsum pharetra ligula
+%ac pretium ante justo a nulla curabitur tristique arcu eu metus}
+%% ----------------------------------------------------------
+%\lipsum[55-57]
+%
+%\end{apendicesenv}
+% ---
+
+
+% ----------------------------------------------------------
+% Anexos
+% ----------------------------------------------------------
+
+% ---
+% Inicia os anexos
+% ---
+%\begin{anexosenv}
+\input{Cap_08_Anexos}
+%
+%% Imprime uma página indicando o início dos anexos
+%\partanexos
+%
+%% ---
+%\chapter{Morbi ultrices rutrum lorem.}
+%% ---
+%\lipsum[30]
+%
+%% ---
+%\chapter{Cras non urna sed feugiat cum sociis natoque penatibus et magnis dis
+%parturient montes nascetur ridiculus mus}
+%% ---
+%
+%\lipsum[31]
+%
+%% ---
+%\chapter{Fusce facilisis lacinia dui}
+%% ---
+%
+%\lipsum[32]
+%
+%\end{anexosenv}
+%
+%%---------------------------------------------------------------------
+%% INDICE REMISSIVO
+%%---------------------------------------------------------------------
+%\phantompart
+%\printindex
+%---------------------------------------------------------------------
+
+\end{document}
+

@@ -44,6 +44,7 @@
    \renewcommand{\imprimircoorientadora}{#2}}
 
 
+
 %%% -----
 %%% Formato de cabeçalho/rodapé romano nos elementos pré-textuais
 %%% -----
@@ -72,6 +73,7 @@
 }
 %%% -----------
 
+
 % -----------
 % Ajuste para Istituição curso e programa
 % --
@@ -86,6 +88,11 @@
 % Comandos de dados - tipo de programa
 \providecommand{\imprimirsubtitulo}{}
 \newcommand{\subtitulo}[1]{\renewcommand{\imprimirsubtitulo}{#1}}
+
+%% Ajustna contagem das notas de rodape
+\usepackage{chngcntr}
+\counterwithout{footnote}{chapter}
+%%
 
 % -----------
 % alterando a capa
@@ -138,6 +145,7 @@
 
 \renewcommand{\folhaderostocontent}{
 \begin{center}
+   %\MakeUppercase{\ABNTEXchapterfont\bfseries\Large\imprimirautor}
    \MakeUppercase{\ABNTEXchapterfont\bfseries\Large\imprimirautor}
     
     \vspace*{-5cm}
@@ -169,13 +177,13 @@
 %  \vspace*{\fill}
 %}%
 
-      \vspace{-3cm}
+    \vspace{-3cm}
 \begin{flushright}
 \abntex@ifnotempty{\imprimirpreambulo}{%
   \hspace{.6\textwidth}
   \begin{minipage}{.65\textwidth}
   \SingleSpacing
-  \imprimirpreambulo\\
+  \normalfont\imprimirpreambulo\\
   
  %\vspace*{\fill}
 %}%
@@ -185,8 +193,9 @@
 \abntex@ifnotempty{\imprimircoorientador}
   {\imprimircoorientadorRotulo~\imprimircoorientador}%
   {\imprimircoorientadoraRotulo~\imprimircoorientadora}%
-}%
+%}%
 \end{minipage}%
+}%
 \end{flushright}
 \vspace*{\fill}
 

@@ -1,0 +1,12 @@
+%---------------------------------------------------
+% Metodologia
+%---------------------------------------------------
+
+\localtableofcontents* 
+
+
+\section{Requisitos}
+%
+Para a guitarra que foi utilizada no processo de amostragem dos acordes, contendo 22 trastes, as frequências máxima e mínima significativas, em termo de amplitude, foram apresentadas na \autoref{tab:freqGuitarra}.
+
+A partir dessa informação é definida a mínima $f_s$ que garanta a reconstrução do sinal. Também foram definidas as componentes de frequência mínima e máxima para o processo de reconhecimento, foram selecionadas as componente imediatamente inferior ao $E_1$, $D\#_1$ e a componente imediatamente superior ao $G_5$, $G\#_5$, totalizando 54 componentes, que serão as características que o classificador receberá como entradas. Como o objetivo é identificar o acorde como maior ou menor, o único parâmetro de entrada de cada componente será a sua amplitude.

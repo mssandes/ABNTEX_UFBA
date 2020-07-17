@@ -1,0 +1,24 @@
+\begin{resumo}
+ 
+%% Revisão(?) SIMAS
+A pesquisa apresentada tem por objetivo realizar o reconhecimento de acordes naturais, maiores e menores, de uma guitarra elétrica. Para tanto, foi necessário pesquisar sobre o tema rede neural artificial (RNA). Promoveu-se o processo de amostragem dos acordes executados na guitarra para a construção de um banco de dados. No processamento de dados, utilizou-se a  (CZT), para a análise do conteúdo harmônico presente nos acordes, a fim de selecionar quais componentes são relevantes em relação à amplitude. Tais componentes formaram o conjunto de características de cada acorde, que foi apresentado à RNA. O banco de dados construído atendeu os requisitos mínimos do sistema e ao Teorema de Nyquist, para a máxima frequência reproduzida por uma guitarra de 22 trastes, além de garantir que a frequência de amostragem não permitisse a existência de duas componentes harmônicas de interesse entre dois períodos de amostragem. Esse critério foi atendido analisando-se a característica da distribuição das frequências da guitarra. Tal instrumento é de escala temperada – possui o mesmo intervalo entre notas consecutivas. Para cada acorde foi construída a \textit{feature chroma}, vetor cujas 12 componentes indicam o somatório das energias contidas nas bandas de frequência correspondentes a cada uma das 12 notas musicais. Com o auxílio do \textit{nprtool – Network Pattern Recognition} assistente do MATLAB\begin{footnotesize}$^{\textregistered}$\end{footnotesize}, para RNA, com uma única camada oculta, testou-se algumas configurações de rede, objetivando determinar qual configuração seria mais eficiente no que diz respeito ao percentual global. Em todas as configurações testadas o número de neurônios da camada de entrada foi de 12, e para a camada de saída 24, uma saída para cada classe. Por fim, algumas configurações, variando o número de neurônios da camada oculta (4 a 20), resultaram num percentual, global, de acerto entre 84,42\%  e 94,32\%. Os dois melhores resultados foram obtidos para uma configuração contendo 20 neurônios, e a segunda contendo 16 neurônios, 93,88\% e 94,32\%, respectivamente.
+ 
+ 
+
+ \textbf{Palavras-chave}: Redes Neurais. Reconhecimento de Acordes. Reconhecimento de Padrões. Recuperação de Informação Musical.
+\end{resumo}
+
+% resumo em inglês
+\begin{resumo}[Abstract]
+ \begin{otherlanguage*}{english}
+ 
+
+The goal of this research is to promote the recognition of natural chords, major and minor, of an electric guitar. Therefore, it was necessary to research on the topic artificial neural network (ANN). Promoted the sampling process performed on the guitar chords for the construction of a database. In data processing, we used the (CZT), for analyzing the harmonic content present in the chords in order to select which components are relevant for amplitude. These components form the feature set of each chord, which was presented to the ANN. The database built has met the minimum requirements of the system and the Nyquist Theorem, to the maximum frequency reproduced by a 22 fret guitar, and ensure that the sampling rate would not allow the existence of two harmonic components of interest between two periods sampling. This criterion was met by analyzing the characteristics of the distribution of guitar frequencies. This instrument is tempered scale - has the same interval between consecutive notes. For each chord has been constructed feature chroma vector whose components 12 indicate the summation of the energies contained in the frequency bands corresponding to each of 12 musical notes. With the aid of nprtool - Network Pattern Recognition assistant Matlab for ANN with a single hidden layer, we tested some network configurations, in order to determine which configuration would be more efficient as regards the overall percentage. In all tested configurations the number of neurons in the input layer 12, and the output layer 24, one output for each class. Finally, some configurations, varying the number of neurons in the hidden layer (4-20) resulted in a percentage, overall, the arrangement between 84.42\% and 94.32\%. The two best results were obtained for a configuration with 20 neurons, and the second containing 16 neurons, 93.88\% and 94.32\%, respectively.
+ 
+ 
+   \vspace{\onelineskip}
+ 
+   \noindent 
+   \textbf{Keywords}: Neural Networking. Chord Recognition. Patterns Recognition. Music Information Retrieval (MIR).
+ \end{otherlanguage*}
+\end{resumo}

@@ -23,25 +23,28 @@
 \ProvidesPackage{abntex2novopacote}[2014/09/01 Criacao desta customizacao do abnTeX2]
 
 % -----------
-% Adicionando Orientadora e Coorientadora
+% Adicionando Orientadores, Orientadora e Coorientadora
 % --
+%\newcommand{\orientadoresname}{Orientadores:} % Inserido por MSS
+%\newcommand{\orientadoraname}{Orientadora:} % Inserido por MSS
+%\newcommand{\coorientadoraname}{Coorientadora:}
 
-\newcommand{\orientadoraname}{Orientadora:} % Inserido por MSS
-\newcommand{\coorientadoraname}{Coorientadora:}
+%{\imprimirorientadoresRotulo~\imprimirorientadores\\}
+
 
 % Comandos de dados - orientadora
-\providecommand{\imprimirorientadoraRotulo}{}
-\providecommand{\imprimirorientadora}{}
-\newcommand{\orientadora}[2][\orientadoraname]%
-  {\renewcommand{\imprimirorientadoraRotulo}{#1}%
-   \renewcommand{\imprimirorientadora}{#2}}
+%\providecommand{\imprimirorientadoraRotulo}{}
+%\providecommand{\imprimirorientadora}{}
+%\newcommand{\orientadora}[2][\orientadoraname]%
+%  {\renewcommand{\imprimirorientadoraRotulo}{#1}%
+%   \renewcommand{\imprimirorientadora}{#2}}
 
 % Comandos de dados - coorientadora
-\providecommand{\imprimircoorientadoraRotulo}{}
-\providecommand{\imprimircoorientadora}{}
-\newcommand{\coorientadora}[2][\coorientadoraname]%
-  {\renewcommand{\imprimircoorientadoraRotulo}{#1}%
-   \renewcommand{\imprimircoorientadora}{#2}}
+%\providecommand{\imprimircoorientadoraRotulo}{}
+%\providecommand{\imprimircoorientadora}{}
+%\newcommand{\coorientadora}[2][\coorientadoraname]%
+%  {\renewcommand{\imprimircoorientadoraRotulo}{#1}%
+%   \renewcommand{\imprimircoorientadora}{#2}}
 
 
 
@@ -75,7 +78,7 @@
 
 
 % -----------
-% Ajuste para Istituição curso e programa
+% Ajuste para Instituição curso e programa
 % --
 % Comandos de dados - faculdade
 \providecommand{\imprimirfaculdade}{}
@@ -94,6 +97,15 @@
 \counterwithout{footnote}{chapter}
 %%
 
+\addto\captionsenglish{% ingles
+  %% adjusts names from abnTeX2
+  \renewcommand{\figureautorefname}{Figure}
+  \renewcommand{\tableautorefname}{Table}
+  \renewcommand{\chapterautorefname}{Chapter}
+  \renewcommand{\appendixautorefname}{Appendix}
+}
+
+
 % -----------
 % alterando a capa
 % --
@@ -108,13 +120,13 @@
        
        \MakeUppercase{\Large\imprimirfaculdade}
        
-       \MakeUppercase{\imprimirprograma}
+       \MakeUppercase{\large\imprimirprograma}
 
        \vspace{2cm}
 
        \textbf{\MakeUppercase{\ABNTEXchapterfont\large\imprimirautor}}
 
-       \vspace{2cm}
+       \vspace{1cm}
 
       \ABNTEXchapterfont\Large\imprimirtipotrabalho
 
@@ -145,7 +157,6 @@
 
 \renewcommand{\folhaderostocontent}{
 \begin{center}
-   %\MakeUppercase{\ABNTEXchapterfont\bfseries\Large\imprimirautor}
    \MakeUppercase{\ABNTEXchapterfont\bfseries\Large\imprimirautor}
     
     \vspace*{-5cm}
@@ -155,9 +166,9 @@
    \vspace*{\fill}\vspace*{\fill}
 
    \begin{center}
-      \MakeUppercase{\ABNTEXchapterfont\bfseries\Large\imprimirtitulo}
+      {\MakeUppercase\ABNTEXchapterfont\bfseries\Large\imprimirtitulo}
 
-      \MakeUppercase{\ABNTEXchapterfont\bfseries\large\imprimirsubtitulo}
+      {\MakeUppercase\ABNTEXchapterfont\bfseries\large\imprimirsubtitulo}
 
       \vspace{3cm}
 
@@ -179,23 +190,24 @@
 
     \vspace{-3cm}
 \begin{flushright}
-\abntex@ifnotempty{\imprimirpreambulo}{%
-  \hspace{.6\textwidth}
-  \begin{minipage}{.65\textwidth}
-  \SingleSpacing
-  \normalfont\imprimirpreambulo\\
-  
- %\vspace*{\fill}
-%}%
-{\imprimirorientadorRotulo~\imprimirorientador\\}
-{\imprimirorientadoraRotulo~\imprimirorientadora\par}
-
-\abntex@ifnotempty{\imprimircoorientador}
-  {\imprimircoorientadorRotulo~\imprimircoorientador}%
-  {\imprimircoorientadoraRotulo~\imprimircoorientadora}%
-%}%
-\end{minipage}%
-}%
+    \abntex@ifnotempty{\imprimirpreambulo}{%
+    \hspace{.6\textwidth}
+    \begin{minipage}{.65\textwidth}
+        \SingleSpacing
+        \normalfont\imprimirpreambulo\\
+        
+        %\vspace*{\fill}
+        %}%
+        {\imprimirorientadorRotulo~\imprimirorientador\\}
+        %{\imprimirorientadoresRotulo~\imprimirorientadores\\}
+        %{\imprimirorientadoraRotulo~\imprimirorientadora\par}
+        
+        \abntex@ifnotempty{\imprimircoorientador}
+        {\imprimircoorientadorRotulo~\imprimircoorientador}%
+        %{\imprimircoorientadoraRotulo~\imprimircoorientadora}%
+        %}%
+    \end{minipage}%
+    }%
 \end{flushright}
 \vspace*{\fill}
 
@@ -211,6 +223,8 @@
 }
 
 \makeatother
+
+% ---
 
 % ---
 % FIM DAS CUSTOMIZACOES PARA A UNIVERSIDADE FEDERAL DA BAHIA

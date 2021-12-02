@@ -53,18 +53,19 @@
 %%% -----
 
 %% Novo estilo
-\makepagestyle{pre_roman} %%% escolha um nome
-\makeevenhead{pre_roman}{}{}{\ABNTEXfontereduzida \textbf \thepage}
-\makeoddhead{pre_roman}{}{}{\ABNTEXfontereduzida \textbf \thepage}
+%\makepagestyle{pre_roman} %%% escolha um nome
+%\makeevenhead{pre_roman}{}{}{\ABNTEXfontereduzida \textbf \thepage}
+%\makeoddhead{pre_roman}{}{}{\ABNTEXfontereduzida \textbf \thepage}
 
 %% Customiza comando \pretextual
-\renewcommand{\pretextual}{
-	\pagenumbering{roman} %%% ou \pagenumbering{Roman}
-	\aliaspagestyle{chapter}{pre_roman}% customizing chapter pagestyle
-	\pagestyle{pre_roman}
-	\aliaspagestyle{cleared}{empty}
-	\aliaspagestyle{part}{pre_roman}
-}
+
+%\renewcommand{\pretextual}{
+%	\pagenumbering{roman} %%% ou \pagenumbering{Roman}
+%	\aliaspagestyle{chapter}{pre_roman}% customizing chapter pagestyle
+%	\pagestyle{pre_roman}
+%	\aliaspagestyle{cleared}{empty}
+%	\aliaspagestyle{part}{pre_roman}
+%}
 
 % ---
 % Ajusta a marca \textual para que a numeração volte a ser arábica
@@ -76,8 +77,12 @@
 }
 %%% -----------
 
-
+% Criacao de listas de simbolos e abreviaturas
+%------------------------------------------------------------
+\usepackage{datatool}
 % -----------
+
+%------------------------------------------------------------
 % Ajuste para Instituição curso e programa
 % --
 % Comandos de dados - faculdade
@@ -100,6 +105,7 @@
 \addto\captionsenglish{% ingles
   %% adjusts names from abnTeX2
   \renewcommand{\figureautorefname}{Figure}
+  \renewcommand{\equationautorefname}{Equation}
   \renewcommand{\tableautorefname}{Table}
   \renewcommand{\chapterautorefname}{Chapter}
   \renewcommand{\appendixautorefname}{Appendix}
@@ -116,7 +122,7 @@
     \begin{center}
        \includegraphics[width=1.4 cm]{logo_ufba.eps}
        
-       \MakeUppercase{\Large\imprimirinstituicao}   %% \MakeUppercase - Letras maiúsculas
+       \MakeUppercase{\LARGE\imprimirinstituicao}   %% \MakeUppercase - Letras maiúsculas
        
        \MakeUppercase{\Large\imprimirfaculdade}
        
@@ -222,9 +228,15 @@
 \end{center}
 }
 
+
+%% Alterações para citeonline Fulano AND Bltrano
+
+
 \makeatother
 
 % ---
+
+
 
 % ---
 % FIM DAS CUSTOMIZACOES PARA A UNIVERSIDADE FEDERAL DA BAHIA

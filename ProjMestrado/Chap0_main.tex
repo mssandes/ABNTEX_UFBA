@@ -1,0 +1,357 @@
+%% abtex2-modelo-trabalho-academico.tex, v-1.9.7 laurocesar
+%% Copyright 2012-2018 by abnTeX2 group at http://www.abntex.net.br/ 
+%%
+%% This work may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in
+%%   http://www.latex-project.org/lppl.txt
+%% and version 1.3 or later is part of all distributions of LaTeX
+%% version 2005/12/01 or later.
+%%
+%% This work has the LPPL maintenance status `maintained'.
+%% 
+%% The Current Maintainer of this work is the abnTeX2 team, led
+%% by Lauro César Araujo. Further information are available on 
+%% http://www.abntex.net.br/
+%%
+%% This work consists of the files abntex2-modelo-trabalho-academico.tex,
+%% abntex2-modelo-include-comandos and abntex2-modelo-references.bib
+%%
+
+% ------------------------------------------------------------------------
+% ------------------------------------------------------------------------
+% abnTeX2: Modelo de Trabalho Academico (tese de doutorado, dissertacao de
+% mestrado e trabalhos monograficos em geral) em conformidade com 
+% ABNT NBR 14724:2011: Informacao e documentacao - Trabalhos academicos -
+% Apresentacao
+% ------------------------------------------------------------------------
+% ------------------------------------------------------------------------
+
+\documentclass[
+% -- opções da classe memoir --
+12pt,				% tamanho da fonte
+openright,			% capítulos começam em pág ímpar (insere página vazia caso preciso)
+twoside,			% para impressão em recto e verso. Oposto a oneside
+a4paper,			% tamanho do papel. 
+% -- opções da classe abntex2 --
+%chapter=TITLE,		% títulos de capítulos convertidos em letras maiúsculas
+%section=TITLE,		% títulos de seções convertidos em letras maiúsculas
+%subsection=TITLE,	% títulos de subseções convertidos em letras maiúsculas
+%subsubsection=TITLE,% títulos de subsubseções convertidos em letras maiúsculas
+% -- opções do pacote babel --
+english,			% idioma adicional para hifenização
+french,				% idioma adicional para hifenização
+spanish,			% idioma adicional para hifenização
+brazil				% o último idioma é o principal do documento
+]{abntex2}
+
+% ---
+% Pacotes básicos 
+% ---
+\usepackage{lmodern}			% Usa a fonte Latin Modern			
+\usepackage[T1]{fontenc}		% Selecao de codigos de fonte.
+\usepackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
+\usepackage{lastpage}			% Usado pela Ficha catalográfica
+\usepackage{indentfirst}		% Indenta o primeiro parágrafo de cada seção.
+
+\usepackage{color, colortbl}	% Controle das cores
+\usepackage[usenames,
+            dvipsnames,
+            svgnames,
+            table]{xcolor}	    % Controle das cores
+\usepackage{graphicx}			% Inclusão de gráficos
+\usepackage{microtype} 			% para melhorias de justificação
+\usepackage{multirow}           % habillitar multi linhas em tabeas
+\usepackage{tabularx}
+\usepackage[table]{xcolor}      % permitir colorir linhas/colunas da tabela
+\usepackage{hyperref}           % referências com hiperlink
+\usepackage{siunitx,booktabs}           % configuraçoes extras de tabela
+\usepackage{longtable}          % para construir tabelas que iniciam em uma página e terminam na outra
+\usepackage{threeparttablex}     % ambiente para permitir justificar o "caption" ao tamnaho da tabela
+\usepackage{verbatim}           % 
+\usepackage{mathtools,
+            amsmath,
+            amsbsy,
+            amssymb,
+            amsfonts,
+            dsfont,
+            slashed}   % Pacotes para auxílio em ambientes matemáticos 
+\usepackage[font=footnotesize,
+            labelfont=bf]
+            {subcaption,caption}   % config p os rótulos de tabelas e figuras e habilitar inserção de sublegendas. ex: figuras com múltiplas imagens
+\usepackage{upgreek}            % simbolos matemáticos maiúsculos
+\usepackage{float}              % obriga ao corpo flutuante ficar na posição que está no código LATEX [H]
+\usepackage{lscape}
+\usepackage{multicol}           % ambiente para configuração de ambientes multicolunas
+%\usepackage{nonfloat}
+\usepackage{caption}
+\usepackage{UFBA}               % personalizações para a UFBA
+\usepackage{eurosym}
+\usepackage{textcomp}
+\usepackage{gensymb}
+\usepackage{etoc}
+\usepackage{nomencl}
+\usepackage{lineno}             % exibir o número da linha para revisão
+\makenomenclature
+\usepackage[nohints,tight]{minitoc} 
+\setcounter{minitocdepth}{4}
+\usepackage{epstopdf}
+%\usepackage{fnpct}
+%\usepackage{ftnxtra}
+%\usepackage{stfloats}
+\usepackage[d]{esvect}
+\usepackage{forest}
+\usetikzlibrary{decorations.pathreplacing,calligraphy,positioning}
+
+% ---
+% Pacotes adicionais, usados apenas no âmbito do Modelo Canônico do abnteX2
+% ---
+\usepackage{lipsum}				% para geração de dummy text
+% ---
+
+% ---
+% Pacotes de citações
+% ---
+\usepackage[brazilian,hyperpageref]{backref}	 % Paginas com as citações na bibl
+\usepackage[alf]{abntex2cite}	% Citações padrão ABNT
+
+% --- 
+% CONFIGURAÇÕES DE PACOTES
+% --- 
+
+% ---
+% Configurações do pacote backref
+% Usado sem a opção hyperpageref de backref
+\renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
+% Texto padrão antes do número das páginas
+\renewcommand{\backref}{}
+% Define os textos da citação
+\renewcommand*{\backrefalt}[4]{
+    \ifcase #1 %
+    Nenhuma citação no texto.%
+    \or
+    Citado na página #2.%
+    \else
+    Citado #1 vezes nas páginas #2.%
+    \fi}%
+% ---
+
+% ----------------------------------------------------------
+% Informações de dados para CAPA e FOLHA DE ROSTO
+% ----------------------------------------------------------
+\titulo{Título do Trabalho.}
+\subtitulo{}  %% Inserir subtítulo, se houver
+\autor{Fulano(a) de Tal}
+\local{Salvador}
+\data{xxxx}
+\orientador{Dr. zzzzzzzzzzzzzzzzz}
+%\orientador{Dr. Eduardo F. de Simas Filho -- UFBA}
+%\coorientador[Co-advisors:]{Dr. Eduardo F. de Simas Filho -- UFBA \hphantom{Co-advisors: } Dr. Bertrand Laforge -- Sorbonne Université}
+\instituicao{Universididade Federal da Bahia -- UFBA}
+\faculdade{Departamento de Engenharia Elétrica}
+\programa{Programa de Pós-graduação em Engenharia Elétrica -- PPGEE}
+\tipotrabalho{Pré-Projeto de Mestrado}
+
+% O preambulo deve conter o tipo do trabalho, o objetivo, 
+% o nome da instituição e a área de concentração 
+\preambulo{xxxxx xxxxxxxx xxxxxxx xxxxxx xxxxxx xxxxx xxxxx xxxxx xxxxxxxxxx xxxxxxxxx.}
+% ---
+
+
+% ---
+% Configurações de aparência do PDF final
+
+% alterando o aspecto da cor azul
+\definecolor{blue}{RGB}{41,5,195}
+
+% informações do PDF
+\makeatletter
+\hypersetup{
+    %pagebackref=true,
+    pdftitle={\@title}, 
+    pdfauthor={\@author},
+    pdfsubject={\imprimirpreambulo},
+    pdfcreator={LaTeX with abnTeX2},
+    pdfkeywords={abnt}{latex}{abntex}{abntex2}{trabalho acadêmico}, 
+    colorlinks=true,       		% false: boxed links; true: colored links
+    linkcolor=blue,          	% color of internal links
+    citecolor=blue,        		% color of links to bibliography
+    filecolor=magenta,      		% color of file links
+    urlcolor=blue,
+    bookmarksdepth=4
+}
+\makeatother
+% --- 
+
+% ---
+% Posiciona figuras e tabelas no topo da página quando adicionadas sozinhas
+% em um página em branco. Ver https://github.com/abntex/abntex2/issues/170
+\makeatletter
+\setlength{\@fptop}{5pt} % Set distance from top of page to first float
+\makeatother
+% ---
+
+% ---
+% Possibilita criação de Quadros e Lista de quadros.
+% Ver https://github.com/abntex/abntex2/issues/176
+%
+
+% --- 
+% Espaçamentos entre linhas e parágrafos 
+% --- 
+
+% O tamanho do parágrafo é dado por:
+\setlength{\parindent}{1.3cm}
+
+% Controle do espaçamento entre um parágrafo e outro:
+\setlength{\parskip}{0.2cm}  % tente também \onelineskip
+
+% ---
+% compila o indice
+% ---
+\makeindex
+% ---
+
+% ----
+% pasta pas as figuras
+% \graphicspath{{subdir1/}{subdir2/}{subdir3/}...{subdirn/}}
+\graphicspath{{./Figs/}}
+
+% ----
+% Início do documento
+% ----
+\begin{document}
+    
+    % Seleciona o idioma do documento (conforme pacotes do babel)
+    %\selectlanguage{english}
+    \selectlanguage{brazil}
+    
+    % Retira espaço extra obsoleto entre as frases.
+    \frenchspacing 
+    
+    % ----------------------------------------------------------
+    % ELEMENTOS PRÉ-TEXTUAIS
+    % ----------------------------------------------------------
+    % \pretextual
+    
+    % ---
+    % Capa
+    % ---
+    \imprimircapa
+    % ---
+    
+    % ---
+    % Folha de rosto
+    % (o * indica que haverá a ficha bibliográfica)
+    % ---
+    \imprimirfolhaderosto*
+    % ---
+    
+    % ---
+    % Inserir a ficha bibliografica
+    % ---
+    
+    % Isto é um exemplo de Ficha Catalográfica, ou ``Dados internacionais de
+    % catalogação-na-publicação''. Você pode utilizar este modelo como referência. 
+    % Porém, provavelmente a biblioteca da sua universidade lhe fornecerá um PDF
+    % com a ficha catalográfica definitiva após a defesa do trabalho. Quando estiver
+    % com o documento, salve-o como PDF no diretório do seu projeto e substitua todo
+    % o conteúdo de implementação deste arquivo pelo comando abaixo:
+    %
+    % \begin{fichacatalografica}
+    %     \includepdf{fig_ficha_catalografica.pdf}
+    % \end{fichacatalografica}
+    
+    % ---
+    % inserir o sumario
+    % ---
+    \pdfbookmark[0]{\contentsname}{toc}
+    \tableofcontents*
+    \cleardoublepage
+    % ---
+    
+    
+    
+    % ----------------------------------------------------------
+    % ELEMENTOS TEXTUAIS
+    % ----------------------------------------------------------
+    \textual
+    
+% ----------------------------------------------------------
+% Introdução - CAPITULO 1
+% ----------------------------------------------------------
+\chapter[Introdução]{Introdução}
+%\addcontentsline{toc}{chapter}{Introdução}
+% ----------------------------------------------------------
+%\minitoc % summary per chapter
+\input{Chap1_Introducao}
+
+
+% ----------------------------------------------------------
+% FCAPITULO 2
+% ----------------------------------------------------------
+\chapter[Objetivos]{Objetivos}
+%\addcontentsline{toc}{chapter}{Pesquisa Bibliográfica}
+\minitoc
+\input{Chap2_Objetivos}
+
+% ----------------------------------------------------------
+% CAPITULO 3
+% ----------------------------------------------------------
+\chapter[Justificativa]{Justificativa}\label{chap:Método}
+%\addcontentsline{toc}{chapter}{Pesquisa Bibliográfica}
+\minitoc
+\input{Chap3_Justificativa}
+
+% ----------------------------------------------------------
+% CAPITULO 4
+% ----------------------------------------------------------
+\chapter[Método]{Método}\label{chap:results}
+%\addcontentsline{toc}{chapter}{Resultados}
+\minitoc
+\input{Chap4_Metodo}
+
+
+% ----------------------------------------------------------
+% CAPITULO 5 
+% ----------------------------------------------------------
+\chapter[Metas e Cronogramas]{Metas e Cronogramas}\label{chap:Cronograma}
+%\addcontentsline{toc}{chapter}{Metas e Cronogramas}
+\minitoc
+\input{Chap5_MetasCronogramas}
+
+% ----------------------------------------------------------
+% CAPITULO 6 
+% ----------------------------------------------------------
+\chapter[Riscos Potenciais]{Riscos Potenciais}\label{chap:Cronograma}
+%\addcontentsline{toc}{chapter}{Metas e Cronogramas}
+\minitoc
+\input{Chap6_RiscosPotenciais}
+
+
+% ----------------------------------------------------------
+% CAPITULO 7
+% ----------------------------------------------------------
+\chapter[Transferência de Resultados]{Transferência de Resultados}\label{chap:Cronograma}
+%\addcontentsline{toc}{chapter}{Metas e Cronogramas}
+\minitoc
+\input{Chap7_TransfResultados}
+
+%% ----------------------------------------------------------
+%% ELEMENTOS PÓS-TEXTUAIS
+%% ----------------------------------------------------------
+\postextual
+%% ----------------------------------------------------------
+%
+%% ----------------------------------------------------------
+% Referências bibliográficas
+%% ----------------------------------------------------------
+%%\bibliography{abntex2-modelo-references}
+
+\begin{small}
+    %\bibliographystyle{abntex2-alf}
+    \bibliography{Chap8_Bibliogaria}
+\end{small}
+
+\end{document}

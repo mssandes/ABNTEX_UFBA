@@ -1,0 +1,115 @@
+\documentclass[
+	% -- opções da classe memoir --
+%	draft,
+	11pt,				% tamanho da fonte
+	openright,			% capítulos começam em pág ímpar (insere página vazia caso preciso)
+	twoside,			% para impressão em verso e anverso. Oposto a oneside
+	a4paper,			% tamanho do papel. 
+	% -- opções da classe abntex2 --
+	%chapter=TITLE,		% títulos de capítulos convertidos em letras maiúsculas
+	%section=TITLE,		% títulos de seções convertidos em letras maiúsculas
+	%subsection=TITLE,	% títulos de subseções convertidos em letras maiúsculas
+	%subsubsection=TITLE,% títulos de subsubseções convertidos em letras maiúsculas
+	% -- opções do pacote babel --
+	english,			% idioma adicional para hifenização
+	french,				% idioma adicional para hifenização
+	spanish,			% idioma adicional para hifenização
+	brazil				% o último idioma é o principal do documento
+	]{abntex2}          % estilo abnt
+
+% ---
+% Pacotes básicos 
+% ---
+\usepackage{lmodern}			% Usa a fonte Latin Modern			
+\usepackage[T1]{fontenc}		% Selecao de codigos de fonte.
+\usepackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
+\usepackage{lastpage}			% Usado pela Ficha catalográfica
+\usepackage{indentfirst}		% Indenta o primeiro parágrafo de cada seção.
+\usepackage{color, colortbl}	% Controle das cores
+\usepackage[usenames,
+            dvipsnames,
+            svgnames,
+            table]{xcolor}	    % Controle das cores
+\usepackage{graphicx}			% Inclusão de gráficos
+\usepackage{microtype} 			% para melhorias de justificação
+\usepackage{multirow}           % habillitar multi linhas em tabeas
+\usepackage[table]{xcolor}      % permitir colorir linhas/colunas da tabela
+\usepackage{hyperref}           % referências com hiperlink
+\usepackage{siunitx,booktabs}           % configuraçoes extras de tabela
+\usepackage{longtable}          % para construir tabelas que iniciam em uma página e erminam na outra
+\usepackage{threeparttable}     % ambiente para permitir justificar o "caption" ao tamnaho da tabela
+\usepackage{verbatim}           % 
+\usepackage{mathtools,
+            amsmath,
+            amsbsy,
+            amssymb,
+            amsfonts, dsfont}   % Pacotes para auxílio em ambientes matemáticos 
+\usepackage[font=footnotesize,
+            labelfont=bf]
+            {subcaption,caption}   % config p os rótulos de tabelas e figuras e habilitar inserção de sublegendas. ex: figuras com múltiplas imagens
+\usepackage{upgreek}            % simbolos matemáticos maiúsculos
+\usepackage{float}              % obriga ao corpo flutuante ficar na posição que está no código LATEX [H]
+\usepackage{lscape}
+\usepackage{multicol}           % ambiente para configuração de ambientes multicolunas
+\usepackage{slashbox}           % habiitar divisao diagonal em celulas de tabelas
+%\usepackage{nonfloat}
+\usepackage{caption}
+\usepackage{UFBA}               % personalizações para a UFBA
+\usepackage{eurosym}
+\usepackage{gensymb}
+\usepackage{etoc}
+\usepackage[nohints,tight]{minitoc} 
+\setcounter{minitocdepth}{4}
+%\usepackage{epstopdf}
+%\usepackage{fnpct}
+%\usepackage{ftnxtra}
+
+
+% ---
+% Pacotes adicionais, usados apenas no âmbito do Modelo Canônico do abnteX2
+% ---
+\usepackage{lipsum}				% para geração de dummy text
+% ---
+
+% ---
+% Pacotes de citações
+% ---
+\usepackage[brazilian,hyperpageref]{backref}	 % Paginas com as citações na bibl
+\usepackage[alf,bibjustif]{abntex2cite}	% Citações padrão ABNT
+
+% --- 
+% CONFIGURAÇÕES DE PACOTES
+% --- 
+
+% ---
+% Configurações do pacote backref
+% Usado sem a opção hyperpageref de backref
+\renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
+% Texto padrão antes do número das páginas
+\renewcommand{\backref}{}
+% Define os textos da citação
+
+\renewcommand*{\backrefalt}[4]{
+	\ifcase #1 %
+	No one citation on the text.%
+	\or
+	Cited on page #2.%
+	\else
+	Cited #1 times on pages #2.%
+	\fi}%
+
+\newenvironment{figurehere}
+  {\par\medskip\noindent\minipage{\linewidth}}
+  {\endminipage\par\medskip}
+
+%\newcommand\figurehere[1]{%
+%\medskip\noindent\begin{minipage}{\columnwidth}
+%\centering%
+%#1%
+%%figure,caption, and label go here
+%\end{minipage}\medskip}
+
+
+%\usepackage{stfloats}
+%% ---
+%% ---

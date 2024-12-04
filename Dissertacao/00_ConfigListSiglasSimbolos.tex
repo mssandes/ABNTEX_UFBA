@@ -1,0 +1,37 @@
+%% ----------------------------------------------------------
+%% Configurações para todas as listas do documento
+%% ----------------------------------------------------------
+
+
+\pdfbookmark[0]{\listfigurename}{lof}
+\listoffigures*
+\cleardoublepage
+%% ---
+%
+%% ----------------------------------------------------------
+%% inserir lista de tabelas
+%% ----------------------------------------------------------
+\pdfbookmark[0]{\listtablename}{lot}
+\listoftables*
+%\cleardoublepage
+%% ---
+%
+%% ----------------------------------------------------------
+%% inserir lista de abreviaturas, siglas e símbolos
+%% ----------------------------------------------------------
+%\input{Chap_0vi_Symbols}
+
+%\input{Chap_0vii_Abbreviations}
+%\clearpage
+%\printglossary*[title=List of Abbreviations,type=\acronymtype]
+%\clearpage
+
+\phantomsection
+\glsresetall
+\glsaddall
+\setlength{\glsdescwidth}{0.5\linewidth}
+\setlength{\glspagelistwidth}{0.1\linewidth}
+\footnotesize{\printnoidxglossary[type=acronym,sort=letter,title=Lista de Abreviaturas e Acrônimos]}
+%\small{\printnoidxglossary[type=symbols,sort=use]} % position in the source font
+\footnotesize{\printnoidxglossary[type=symbols,sort=letter, title=Lista de Símbolos]}
+\cleardoublepage

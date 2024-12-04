@@ -1,0 +1,70 @@
+% ---
+% Configurações de aparência do PDF final
+% Cores no latex: http://latexcolor.com/
+
+% alterando o aspecto da cor azul
+%\definecolor{blue}{RGB}{41,5,195}
+% definindo cor usada nos hiperlinks do documento
+\definecolor{persianplum}{rgb}{0.44, 0.11, 0.11}
+\definecolor{midnightblue}{rgb}{0.1, 0.1, 0.44}
+% cor utilizada em celulas de tabelas
+\definecolor{lightgray}{rgb}{.9 .9 .9}
+\definecolor{gray2}{rgb}{.69 .69 .69}
+
+%\definecolor{orange}{rgb}{0.9, 0.36, 0.03}
+% informações do PDF
+\makeatletter
+\hypersetup{
+     	%pagebackref=true,		pdftitle={\@title}, 
+		pdfauthor={\@author},
+    	pdfsubject={\imprimirpreambulo},
+	    pdfcreator={LaTeX with abnTeX2},
+		pdfkeywords={abnt}{latex}{abntex}{abntex2}{trabalho acadêmico}, 
+		colorlinks=true,       		% false: boxed links; true: colored links
+%    	linkcolor=blue,          	% color of internal links
+    	citecolor=persianplum,       % color of links to bibliography
+    	linkcolor=midnightblue,       % color of internal links
+%    	citecolor=black,            % color of links to bibliography
+    	filecolor=magenta,      	% color of file links
+		urlcolor=blue,
+		bookmarksdepth=4
+}
+\makeatother
+% --- 
+
+% --- 
+% Espaçamentos entre colunas
+% --- 
+\setlength{\columnsep}{7mm}
+
+% --- 
+% Espaçamentos entre linhas e parágrafos 
+% --- 
+
+% O tamanho do parágrafo é dado por:
+\setlength{\parindent}{1.3cm}
+
+% Controle do espaçamento entre um parágrafo e outro:
+\setlength{\parskip}{0.2cm}  % tente também \onelineskip
+
+% ---
+% compila o indice
+% ---
+\makeindex
+% ---
+
+% ----
+% pasta pas as figuras
+% \graphicspath{{subdir1/}{subdir2/}{subdir3/}...{subdirn/}}
+%\graphicspath{{/media/mssandes/MSSANDES1/cernbox/Pesquisa/Figuras/}}
+\graphicspath{{./Figs/}}
+
+% ----
+% Glossário 
+\newglossary{symbols}{sym}{sbl}{List of Symbols}
+%\usepackage{filecontents}
+%\begin{filecontents}{gloss.tex}
+\input{Cap_00_vi_SiglasSimbolos}
+%\GlsSetWriteIstHook{\write\glswrite{page_precedence "rnR"}}
+\makenoidxglossaries
+\glsnoexpandfields

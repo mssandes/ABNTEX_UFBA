@@ -2,46 +2,14 @@
 %%         Introdução
 %% ===========================
 
-O presente trabalho foi proposto com o intuito de desenvolver um algoritmo (em plataforma MATLAB\begin{footnotesize}$^{\textregistered}$\end{footnotesize}) capaz de reconhecer acordes naturais, provenientes de uma guitarra elétrica, utilizando como classificador, Redes Neurais Artificiais (RNA). Iniciando com a coleta de dados, amostras de acordes naturais, maiores e menores, processamento via FFT (\textit{Fast Fourier Transform)} obtendo as componentes de frequência presentes em cada acorde, organização das componentes de interesse e em seguida aplicação das mesmas numa RNA.
+Esse é um texto exemplo para mostrar como chamar a lista de acrônimos e glossário automáticos. Para treinar uma \gls{rna}. Na primeira aparição no texto usando o comando \verb|\gls{rna}| a sigla é apresentada por extenso. Caso a sigla seja em minúsculo e precise capitalizar, basta usar \verb|\Gls{rna}|.
 
+A lista de constantes é impressa mesmo que não seja invocada. Basta definir os símbolos e/ou constantes na lista de símbolos pelo comando: 
+
+\verb|\newglossaryentry{ec}{type=symbols,name={E$_c$},sort=e,description={Critical Energy}}|
+
+Caso queira chamar um símbolo, a sintaxe é a mesma \verb|\gls{eta}|, \gls{eta}.
 %---------------------------------------------------
 % Justificativa
 %---------------------------------------------------
-\section{Justificativa}
 
-Em sistemas de áudio onde existam instrumentos elétricos e acústicos,  a captação e equalização de cada  instrumento  é  importante,  e  até  decisiva,  no  que  se  refere  à  qualidade  do  sinal  reproduzido.  Assim,  a  detecção/identificação  de  acordes  é  um  dos  pontos  de  interesse,  e  importantes  para  essa tarefa, uma vez que a resposta peculiar de cada instrumento devido às suas características construtivas é determinante no sinal produzido pelo instrumento. Para tanto,  as técnicas de reconhecimento de padrões, são parte de um sistema que visa tratar a equalização de forma dinâmica, ou seja, seguir  um  padrão  de  referência  desejado,  e  ajustado  para a  obtenção  de  um  sinal  puro  e  de  qualidade.
-
-Também numa abordagem mais ampla, de forma adequada à necessidade, o reconhecimento de padrões pode ser aplicado no desenvolvimento de sistemas de equalização dinâmica. Nesse, deseja-se obter uma resposta plana do sistema de áudio, equipamentos e ambiente, de modo a minimizar os efeitos incômodos da realimentação positiva, mais conhecido como microfonia \cite{valle2002}. A partir desse momento, o sistema ao perceber que a reposta plana ou a desejada não está ocorrendo e está na iminência de produzir um pico de determinada componente de frequência, deve identificar quais componentes de frequência que caracterizam um padrão de microfonia e atenuá-las a níveis pré-estabelecidos por meio de equalização\footnote{Atenuação da distorção de um sinal por meio de circuitos compensadores capazes de reforçar a intensidade de algumas frequências e diminuir a de outras \cite{dicio2014}}, via processamento digital. No que se refere a tratamento acústico de ambientes, auxiliar no processo de detecção, e obtenção da resposta do ambiente a um sinal de referência, sinalizando quais componentes de frequência são acentuadas/atenuadas pelas características físicas do ambiente. Com essa resposta em frequência obtida, as técnicas de tratamento e absorção acústica, podem ser aplicadas com o auxílio desse sistema de reconhecimento de padrões, que opera com espectro de frequências na faixa audível (20 Hz - 20 kHz).
-
-Utilizar as técnicas de processamento de sinal, em domínio do tempo e em domínio da frequência, aliados às técnicas de redes neurais artificiais (RNAs) como classificador estatístico de características, possui grandes vantagens de aplicação. Pois, é possível explorar a capacidade de aprendizado presente numa RNA, que graças à sua estrutura, maciça e distribuída \cite{haykin2001}, é capaz de generalizar, ou seja, gerar saídas para sinais de entrada que não fizeram parte do conjunto de dados do treinamento. O que nesse projeto, refere-se a uma tabela de acordes com as notas (frequências) que os compõem, permite aplicações para desenvolvimento de sistemas sintetizadores de áudio, a exemplo um teclado, desenvolvimento de pedais/módulos de efeito, onde o objetivo seja extrair as características de interesse e por meio de filtros, "distorcer" o sinal, da forma desejada e precisa.
-
-A seguir na \autoref{fig:fluxo}, o fluxo de desenvolvimento do projeto da amostragem ao resultado da RNA.
-
-\begin{figure}[H]
-   \begin{center}   
-      \caption{Fluxo de desenvolvimento do projeto.}
-      \label{fig:fluxo}
-      \includegraphics[scale=.8]{Fluxo.png}
-      %\legend{Fonte: O autor}
-    \end{center}
-\end{figure}
-%---------------------------------------------------
-% Objetivo
-%---------------------------------------------------
-\section{Objetivo}
-Realizar a classificação de acordes naturais, maiores  e  menores, utilizando uma Rede Neural Artificial (RNA), MLP (\textit{Multi Layer Preceptron}) estrutura \textit{feedfoward}.
-%Amostrar, estudar e processar o sinal obtido de uma guitarra elétrica, para desenvolvimento de um algoritmo  que  seja  capaz  de  reconhecer  acordes  naturais,  padrões  \cite{ripley1996},  maiores  e  menores, utilizando uma Rede Neural Artificial (RNA). 
-
-\subsection{Objetivos Específicos}
-
-\begin{itemize}
-   \item Pesquisar sobre as técnicas de aprendizado e treinamento de RNA e selecionar um método para desenvolvimento do trabalho;
-   \item Amostrar e processar o sinal obtido de uma guitarra elétrica;
-%   \item Desenvolver algoritmo em Matlab$^{\textregistered}$ para o tratamento do sinal obtido da guitarra;
-   \item Utilizar as ferramentas de reconhecimento de padrões em redes neurais artificiais disponíveis na plataforma MATLAB$^{\textregistered}$, para reconhecimento de acordes maiores e menores na escala natural.
-%   \item Criar banco de dados de acordes naturais para avaliar reposta de algoritmo desenvolvido, com base em composição de frequências;
-%   \item Coletar amostras de acordes naturais, maiores e menores, executados em guitarra elétrica para aplicação em uma RNA, afim de que ela consiga identificar que acorde foi executado;
-%   \item Comparar resultados obtidos do algoritmo no MATLAB\begin{footnotesize}$^{\textregistered}$\end{footnotesize} com a teoria de formação de acordes, frequências constituintes;
-%   \item Validar algoritmo em MATLAB$^{\textregistered}$ produzindo um código que seja portável na plataforma ARM Cortex-M3.
-\end{itemize} 
-%% =====================

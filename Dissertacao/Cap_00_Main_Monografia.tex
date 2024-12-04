@@ -1,0 +1,237 @@
+% ------------------------------------------------------------------------
+
+\input{00_Pacotes}
+\input{00_ConfigCapaFolhaRosto}
+\input{00_ConfigAparencia}
+
+\definecolor{bondiblue}{rgb}{0.0, 0.58, 0.71}
+\definecolor{babyblue}{rgb}{0.54, 0.81, 0.94}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Início do documento
+% ----
+\begin{document}
+\selectlanguage{brazil}
+
+\renewcommand{\bibname}{{References}}
+
+%\linenumbers             %% habilita a impressão do número de cada linha do texto para auxiliar na revisão
+
+\newcolumntype{C}{>{\centering\arraybackslash}p{1.2em}}
+
+% Retira espaço extra obsoleto entre as frases.
+\frenchspacing
+
+% ==========================================================
+% ----------------------------------------------------------
+% ELEMENTOS PRÉ-TEXTUAIS
+% ----------------------------------------------------------
+% \pretextual
+
+% ---
+% Capa
+% ---
+\imprimircapa
+% ---
+
+% ---
+% Folha de rosto
+% (o * indica que haverá a ficha bibliográfica)
+% ---
+\imprimirfolhaderosto*
+% ---
+
+% ---
+% Inserir a ficha Catalográfica
+% ---
+\input{Cap_00_i_FichaCatalografica}
+
+% ----------------------------------------------------------
+% Inserir errata
+% ----------------------------------------------------------
+%\input{Cap_00_ii_Errata}
+
+% ---
+% Inserir folha de aprovação
+% ----------------------------------------------------------
+\include{Cap_00_ii_FolhaAprovacao}
+% ----------------------------------------------------------
+
+% ---
+% Dedicatória
+% ----------------------------------------------------------
+\include{Cap_00_iii_Dedicatory}
+% ----------------------------------------------------------
+
+% ---
+% Agradecimentos
+% ----------------------------------------------------------
+\include{Cap_00_iv_Acknowledgments}
+% ----------------------------------------------------------
+
+% ----------------------------------------------------------
+% Epígrafe
+% ----------------------------------------------------------
+%\input{Cap_00_v_Epigraph}
+% ---
+
+%% ----------------------------------------------------------
+%% RESUMOS
+%% ----------------------------------------------------------
+\setlength{\absparsep}{18pt} % ajusta o espaçamento dos parágrafos do resumo
+%\input{Cap_0vi_Resume}
+
+%% ---
+%% Configuraçoes das listas (TODAS)
+%% ---
+\input{00_ConfigListSiglasSimbolos}
+
+% ----------------------------------------------------------
+% inserir o sumario
+% ----------------------------------------------------------
+\input{00_ConfigSumario}
+
+\textual
+
+% ----------------------------------------------------------
+% Introdução - CAPITULO 1
+% ----------------------------------------------------------
+\chapter[Introdução]{Introdução}\label{Cap:Introducao}
+%\addcontentsline{toc}{chapter}{Introdução}
+% ----------------------------------------------------------
+%\minitoc % summary per chapter
+\input{Cap_01_Introducao}
+
+% ----------------------------------------------------------
+% Física e o LHC - CAPITULO 2
+% ----------------------------------------------------------
+\chapter[Pesquisa Bibliográfica]{Pesquisa}\label{Cap:FisLHC}
+%\addcontentsline{toc}{chapter}{Pesquisa Bibliográfica}
+%\minitoc
+\input{Cap_02_PesqBiblio}
+
+% ----------------------------------------------------------
+% Técnicas - CAPITULO 3
+% ----------------------------------------------------------
+\chapter[MétodoProposto]{Mátodo Prosposto}\label{Cap:Método}
+%\addcontentsline{toc}{chapter}{Pesquisa Bibliográfica}
+%\minitoc
+\input{Cap_03_Metodo}
+
+% ----------------------------------------------------------
+% Resultados Parciais- CAPITULO 4
+% ----------------------------------------------------------
+\chapter[Resultados]{Resultados}\label{Cap:results}
+%\addcontentsline{toc}{chapter}{Resultados}
+%\minitoc
+\input{Cap_04_Resultados}
+
+% ----------------------------------------------------------
+% Resultados Parciais- CAPITULO 4
+% ----------------------------------------------------------
+\chapter[Conclusão]{Conclusion}\label{Cap:conclusion}
+%\addcontentsline{toc}{chapter}{Resultados}
+%\minitoc
+\input{Cap_05_Conclusao}
+
+%% ----------------------------------------------------------
+%% ELEMENTOS PÓS-TEXTUAIS
+%% ----------------------------------------------------------
+\postextual
+%% ----------------------------------------------------------
+%
+%% ----------------------------------------------------------
+% Referências bibliográficas
+%% ----------------------------------------------------------
+%%\bibliography{abntex2-modelo-references}
+
+\begin{small}
+    %\bibliographystyle{abntex2-alf}
+   \bibliography{Cap_06_Bibliografia}
+\end{small}
+%
+%% ----------------------------------------------------------
+%% Glossário
+%% ----------------------------------------------------------
+%%
+%% Consulte o manual da classe abntex2 para orientações sobre o glossário.
+%%
+%%\glossary
+%
+%% ----------------------------------------------------------
+%% Apêndices
+%% ----------------------------------------------------------
+%
+%% ---
+%% Inicia os apêndices
+%% ---
+%\chapter[Appendix]{Appendix}\label{Cap:Apêndices}
+%\addcontentsline{toc}{chapter}{Apêndices}
+
+\begin{small}
+    \input{Cap_07_Apendices}\label{Cap:apendices}
+\end{small}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\begin{apendicesenv}
+%
+% Imprime uma página indicando o início dos apêndices
+%%\partapendices
+%%
+%%% ----------------------------------------------------------
+%\chapter{Códigos}
+%\input{Cap_08_Apendices}\label{Cap:apendices}
+%%% --------------------------------------------------------
+%%
+%%\lipsum[50]
+%%
+%%% ----------------------------------------------------------
+%%\chapter{Nullam elementum urna vel imperdiet sodales elit ipsum pharetra ligula
+%%ac pretium ante justo a nulla curabitur tristique arcu eu metus}
+%%% ----------------------------------------------------------
+%%\lipsum[55-57]
+%%
+%\end{apendicesenv}
+% ---
+
+
+% ----------------------------------------------------------
+% Anexos
+% ----------------------------------------------------------
+
+% ---
+% Inicia os anexos
+% ---
+%\begin{anexosenv}
+%
+%% Imprime uma página indicando o início dos anexos
+%\partanexos
+%
+%% ---
+%\chapter{Morbi ultrices rutrum lorem.}
+%% ---
+%\lipsum[30]
+%
+%% ---
+%\chapter{Cras non urna sed feugiat cum sociis natoque penatibus et magnis dis
+%parturient montes nascetur ridiculus mus}
+%% ---
+%
+%\lipsum[31]
+%
+%% ---
+%\chapter{Fusce facilisis lacinia dui}
+%% ---
+%
+%\lipsum[32]
+%
+%\end{anexosenv}
+%
+%%---------------------------------------------------------------------
+%% INDICE REMISSIVO
+%%---------------------------------------------------------------------
+%\phantompart
+%\printindex
+%---------------------------------------------------------------------
+\end{document}

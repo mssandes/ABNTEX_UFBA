@@ -6,3 +6,10 @@ Comandos para capa:
     \faculdade{Departamento}
     \programa{Programa}
     \tipotrabalho{Ph.D. Thesis}
+
+```bash
+    \instituicao{Instituição}
+    \faculdade{Departamento}
+    \programa{Programa}
+    \tipotrabalho{Ph.D. Thesis}
+

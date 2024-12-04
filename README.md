@@ -19,3 +19,7 @@ Para o caso de símbolos:
 `\newglossaryentry{eta}{type=symbols,name=\ensuremath{\eta},sort=p,description={Pseudorapidity}}`
 
 A entrada `sort=p` definie uma letra para que o compilador observe na ordenação. O comando `\ensuremath{}` garante a formação no ambiente matemático.
+
+Os capítulos a partir do segundo apresentam um sumário que é chamado pelo comando a seguir.
+
+`\localtableofcontents*`

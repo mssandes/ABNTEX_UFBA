@@ -22,4 +22,5 @@ A entrada `sort=p` definie uma letra para que o compilador observe na ordenaçã
 
 Os capítulos a partir do segundo apresentam um sumário que é chamado pelo comando a seguir.
 
-`\localtableofcontents*`
+```latex
+    \localtableofcontents*
